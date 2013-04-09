@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 4:32:36 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.ithb.model.Hakakses" table="hakakses" catalog="siabaru">
+        <id name="idakses" type="string">
+            <column name="idakses" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="login" type="java.lang.Integer">
+            <column name="login" />
+        </property>
+        <property name="viewabsensi" type="java.lang.Integer">
+            <column name="viewabsensi" />
+        </property>
+        <property name="editabsensi" type="java.lang.Integer">
+            <column name="editabsensi" />
+        </property>
+        <property name="isifrs" type="java.lang.Integer">
+            <column name="isifrs" />
+        </property>
+        <property name="editsyaratfrs" type="java.lang.Integer">
+            <column name="editsyaratfrs" />
+        </property>
+        <property name="editmkfrs" type="java.lang.Integer">
+            <column name="editmkfrs" />
+        </property>
+        <property name="viewnilai" type="java.lang.Integer">
+            <column name="viewnilai" />
+        </property>
+        <property name="editnilai" type="java.lang.Integer">
+            <column name="editnilai" />
+        </property>
+        <property name="viewkeuangan" type="java.lang.Integer">
+            <column name="viewkeuangan" />
+        </property>
+        <property name="editkeuangan" type="java.lang.Integer">
+            <column name="editkeuangan" />
+        </property>
+        <property name="viewpengumuman" type="java.lang.Integer">
+            <column name="viewpengumuman" />
+        </property>
+        <property name="editpengumuman" type="java.lang.Integer">
+            <column name="editpengumuman" />
+        </property>
+        <property name="viewjadwal" type="java.lang.Integer">
+            <column name="viewjadwal" />
+        </property>
+        <property name="editjadwal" type="java.lang.Integer">
+            <column name="editjadwal" />
+        </property>
+        <property name="viewdatamhs" type="java.lang.Integer">
+            <column name="viewdatamhs" />
+        </property>
+        <property name="editdatamhs" type="java.lang.Integer">
+            <column name="editdatamhs" />
+        </property>
+        <property name="viewdatadosen" type="java.lang.Integer">
+            <column name="viewdatadosen" />
+        </property>
+        <property name="editdatadosen" type="java.lang.Integer">
+            <column name="editdatadosen" />
+        </property>
+        <property name="viewdatastaff" type="java.lang.Integer">
+            <column name="viewdatastaff" />
+        </property>
+        <property name="editdatastaff" type="java.lang.Integer">
+            <column name="editdatastaff" />
+        </property>
+        <property name="viewdatamk" type="java.lang.Integer">
+            <column name="viewdatamk" />
+        </property>
+        <property name="editdatamk" type="java.lang.Integer">
+            <column name="editdatamk" />
+        </property>
+        <property name="editdatahukum" type="java.lang.Integer">
+            <column name="editdatahukum" />
+        </property>
+        <property name="viewperiode" type="java.lang.Integer">
+            <column name="viewperiode" />
+        </property>
+        <property name="editperiode" type="java.lang.Integer">
+            <column name="editperiode" />
+        </property>
+        <property name="viewipk" type="java.lang.Integer">
+            <column name="viewipk" />
+        </property>
+        <property name="viewkhs" type="java.lang.Integer">
+            <column name="viewkhs" />
+        </property>
+        <property name="viewkartuujian" type="java.lang.Integer">
+            <column name="viewkartuujian" />
+        </property>
+        <property name="viewtranskrip" type="java.lang.Integer">
+            <column name="viewtranskrip" />
+        </property>
+        <property name="viewkrs" type="java.lang.Integer">
+            <column name="viewkrs" />
+        </property>
+        <set name="dosens" inverse="true">
+            <key>
+                <column name="idakses" length="5" />
+            </key>
+            <one-to-many class="com.ithb.model.Dosen" />
+        </set>
+        <set name="staffs" inverse="true">
+            <key>
+                <column name="idakses" length="5" />
+            </key>
+            <one-to-many class="com.ithb.model.Staff" />
+        </set>
+        <set name="mahasiswas" inverse="true">
+            <key>
+                <column name="idakses" length="5" />
+            </key>
+            <one-to-many class="com.ithb.model.Mahasiswa" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 4:32:36 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.ithb.model.Jadwal" table="jadwal" catalog="siabaru">
+        <id name="kodejadwal" type="string">
+            <column name="kodejadwal" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="hari" type="date">
+            <column name="hari" length="10" />
+        </property>
+        <property name="tanggal" type="date">
+            <column name="tanggal" length="10" />
+        </property>
+        <property name="jam" type="date">
+            <column name="jam" length="10" />
+        </property>
+        <set name="jadwalhadirs" inverse="true">
+            <key>
+                <column name="kodejadwal" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Jadwalhadir" />
+        </set>
+    </class>
+</hibernate-mapping>

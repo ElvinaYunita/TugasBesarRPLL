@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 4:32:36 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.ithb.model.Fakultas" table="fakultas" catalog="siabaru">
+        <id name="kodefak" type="string">
+            <column name="kodefak" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="namafak" type="string">
+            <column name="namafak" length="30" not-null="true" />
+        </property>
+        <set name="departemens" inverse="true">
+            <key>
+                <column name="kodefak" length="5" />
+            </key>
+            <one-to-many class="com.ithb.model.Departemen" />
+        </set>
+    </class>
+</hibernate-mapping>

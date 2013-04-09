@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 4:32:36 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.ithb.model.Mahasiswa" table="mahasiswa" catalog="siabaru">
+        <id name="nim" type="string">
+            <column name="nim" length="30" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hakakses" class="com.ithb.model.Hakakses" fetch="select">
+            <column name="idakses" length="5" />
+        </many-to-one>
+        <property name="nama" type="string">
+            <column name="nama" length="30" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="30" not-null="true" />
+        </property>
+        <property name="ttl" type="string">
+            <column name="ttl" length="30" not-null="true" />
+        </property>
+        <property name="statusmhs" type="string">
+            <column name="statusmhs" length="30" not-null="true" />
+        </property>
+        <set name="nilais" inverse="true">
+            <key>
+                <column name="nim" length="30" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Nilai" />
+        </set>
+        <set name="jadwalhadirs" inverse="true">
+            <key>
+                <column name="nim" length="30" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Jadwalhadir" />
+        </set>
+        <set name="beradas" inverse="true">
+            <key>
+                <column name="nim" length="30" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Berada" />
+        </set>
+        <set name="matakuliahs" inverse="false" table="frs">
+            <key>
+                <column name="nim" length="10" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.ithb.model.Matakuliah">
+                <column name="kodemk" length="5" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="pembayarans" inverse="true">
+            <key>
+                <column name="nim" length="30" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Pembayaran" />
+        </set>
+    </class>
+</hibernate-mapping>

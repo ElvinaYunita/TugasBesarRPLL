@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Sistem Informasi Akademik</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <link href="styles.css" rel="stylesheet" type="text/css" media="screen" />
+    </h:head>
+    <h:body>
+        <div id="header">
+            <div id="logo">
+                <h1><a href="#">Sistem Informasi Akademik</a></h1>
+                <a href="#"><small>Anda Login Sebagai: Dosen</small></a>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="menuDosen.jsf">Dosen</a></li>
+                    <li><a href="menuStaff.jsf" class="select">Staff</a></li>
+                    <li><a href="menuMhs.jsf">Mahasiswa</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content_top"></div>
+        <div id="content">
+            <div id="prew_box">
+                <div id="prew_top"></div>
+                <div id="prew_bg">
+
+                    <div id="wrapper">
+                        <div id="slider-wrapper">        
+                            <h1 style="color: white">Pengumuman</h1>
+                            <h2>Perkuliahan</h2>
+                            <h2>Perkuliahan</h2>
+                            <h2>Perkuliahan</h2>
+                            <h2>Perkuliahan</h2>        
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div id="prew_bot"></div>
+            </div>
+            <div class="white_box">
+                <div class="white_box_top"></div>
+                <div class="white_box_bg">
+
+                    <div>
+                        <h3>Data Dosen</h3>                    
+                    </div>
+
+                    <h:form id="formTabel">
+                        <p:dataTable value="#{dosenController.dosenList}" var="dsn" rows="2" rowKey="#{dsn.nik}" selection="#{dosenController.dsn}" selectionMode="single" draggableColumns="true">                          
+                            <p:column headerText="NIK">
+                                #{dsn.nik}
+                            </p:column>
+                            <p:column headerText="Nama">
+                                #{dsn.nama}
+                            </p:column>
+                            <p:column headerText="Alamat">
+                                #{dsn.alamat}
+                            </p:column>
+                            <p:column headerText="Studi">
+                                #{dsn.studi}
+                            </p:column>
+                            <p:column headerText="Pendidikan">
+                                #{dsn.pendidikan}
+                            </p:column>
+                            <p:column headerText="Status">
+                                #{dsn.statusDosen}
+                            </p:column>
+                            <p:column headerText="Dept">
+                                #{dsn.departemen.kodedept}
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+
+
+                </div>
+                <div class="white_box_bot"></div>
+            </div>
+        </div>
+        <div id="content_bot"></div>
+
+        <div id="footer">
+            <p>Copyright  2013.</p>
+            <p>Sistem Informasi Akademik </p>
+        </div>
+    </h:body>
+</html>
+

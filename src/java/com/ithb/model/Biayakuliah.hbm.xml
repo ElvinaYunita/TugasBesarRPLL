@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 4:32:36 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.ithb.model.Biayakuliah" table="biayakuliah" catalog="siabaru">
+        <composite-id name="id" class="com.ithb.model.BiayakuliahId">
+            <key-property name="angkatan" type="int">
+                <column name="angkatan" />
+            </key-property>
+            <key-property name="kodedept" type="string">
+                <column name="kodedept" length="5" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="departemen" class="com.ithb.model.Departemen" update="false" insert="false" fetch="select">
+            <column name="kodedept" length="5" not-null="true" />
+        </many-to-one>
+        <property name="biayatetap" type="java.lang.Integer">
+            <column name="biayatetap" />
+        </property>
+        <property name="biayasks" type="java.lang.Integer">
+            <column name="biayasks" />
+        </property>
+        <property name="biayaprak" type="java.lang.Integer">
+            <column name="biayaprak" />
+        </property>
+        <property name="biayaadmin" type="java.lang.Integer">
+            <column name="biayaadmin" />
+        </property>
+        <set name="pembayarans" inverse="true">
+            <key>
+                <column name="angkatan" not-null="true" />
+                <column name="kodedept" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Pembayaran" />
+        </set>
+    </class>
+</hibernate-mapping>

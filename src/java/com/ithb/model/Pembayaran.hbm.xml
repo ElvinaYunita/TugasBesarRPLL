@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 4:32:36 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.ithb.model.Pembayaran" table="pembayaran" catalog="siabaru">
+        <composite-id name="id" class="com.ithb.model.PembayaranId">
+            <key-property name="kodemk" type="string">
+                <column name="kodemk" length="5" />
+            </key-property>
+            <key-property name="nim" type="string">
+                <column name="nim" length="30" />
+            </key-property>
+            <key-property name="angkatan" type="int">
+                <column name="angkatan" />
+            </key-property>
+            <key-property name="kodedept" type="string">
+                <column name="kodedept" length="5" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="biayakuliah" class="com.ithb.model.Biayakuliah" update="false" insert="false" fetch="select">
+            <column name="angkatan" not-null="true" />
+            <column name="kodedept" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mahasiswa" class="com.ithb.model.Mahasiswa" update="false" insert="false" fetch="select">
+            <column name="nim" length="30" not-null="true" />
+        </many-to-one>
+        <many-to-one name="matakuliah" class="com.ithb.model.Matakuliah" update="false" insert="false" fetch="select">
+            <column name="kodemk" length="5" not-null="true" />
+        </many-to-one>
+        <property name="statuskeuangan" type="java.lang.Integer">
+            <column name="statuskeuangan" />
+        </property>
+    </class>
+</hibernate-mapping>

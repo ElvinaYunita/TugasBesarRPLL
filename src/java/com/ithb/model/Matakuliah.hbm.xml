@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 4:32:36 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.ithb.model.Matakuliah" table="matakuliah" catalog="siabaru">
+        <id name="kodemk" type="string">
+            <column name="kodemk" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="namamk" type="string">
+            <column name="namamk" length="30" not-null="true" />
+        </property>
+        <property name="sks" type="int">
+            <column name="sks" not-null="true" />
+        </property>
+        <property name="semester" type="int">
+            <column name="semester" not-null="true" />
+        </property>
+        <property name="kurikulum" type="string">
+            <column name="kurikulum" length="30" />
+        </property>
+        <property name="wajibpilihan" type="string">
+            <column name="wajibpilihan" length="30" />
+        </property>
+        <set name="mahasiswas" inverse="true" table="frs">
+            <key>
+                <column name="kodemk" length="5" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.ithb.model.Mahasiswa">
+                <column name="nim" length="10" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="departemens" inverse="true" table="punya">
+            <key>
+                <column name="kodemk" length="5" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.ithb.model.Departemen">
+                <column name="kodedept" length="5" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="jadwalhadirs" inverse="true">
+            <key>
+                <column name="kodemk" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Jadwalhadir" />
+        </set>
+        <set name="nilais" inverse="true">
+            <key>
+                <column name="kodemk" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Nilai" />
+        </set>
+        <set name="beradas" inverse="true">
+            <key>
+                <column name="kodemk" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Berada" />
+        </set>
+        <set name="kelolas" inverse="true">
+            <key>
+                <column name="kodemk" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Kelola" />
+        </set>
+        <set name="pembayarans" inverse="true">
+            <key>
+                <column name="kodemk" length="5" not-null="true" />
+            </key>
+            <one-to-many class="com.ithb.model.Pembayaran" />
+        </set>
+        <set name="dosens" inverse="true" table="ajar">
+            <key>
+                <column name="kodemk" length="5" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.ithb.model.Dosen">
+                <column name="nik" length="5" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

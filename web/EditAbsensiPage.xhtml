@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <h:panelGrid columns="3">
+            <h:outputText value="Matakuliah"/>
+            <h:outputText value=":"/>                  
+            <p:selectOneMenu value="#{editAbsensiController.pilihanMK}"  effect="fade">  
+                <f:selectItem itemLabel="Select One" itemValue="" />  
+                <f:selectItems value="#{editAbsensiController.jhadirList}" var="matkul" itemValue="#{matkul.id.kodemk}" itemLabel="#{matkul.id.kodemk}"/>  
+            </p:selectOneMenu>
+            <h:outputText value="Tanggal"/>
+            <h:outputText value=":"/>
+            <p:calendar value="#{editAbsensiController.jhadir.tanggal}" id="tglhadir"/>
+        </h:panelGrid>
+        <p:commandButton value="Process" action="#{editAbsensiController.loadAbsensi}"/>
+        </h:form>
+        
+        <h:form>
+            <p:dataTable value="#{editAbsensiController.jhadirList}" var="jhadir" 
+                         paginator="true" rows="20" 
+                         rowKey="#{jhadir}"
+                         draggableColumns="true">
+                <p:column headerText="NIM"> 
+                    #{jhadir.id.nim}
+                </p:column>
+                <p:column headerText="Nama"> 
+                    #{jhadir.id.nik}
+                </p:column>
+                <p:column>
+                    <h:panelGrid cellpadding="5" border="0">
+                        <p:selectOneRadio id="customRadio" value="#{editAbsensiController.radioOption}">
+                            <f:selectItem itemLabel="Hadir" itemValue="hadir"/>
+                            <f:selectItem itemLabel="Sakit" itemValue="sakit"/>
+                            <f:selectItem itemLabel="Ijin" itemValue="ijin"/>
+                            <f:selectItem itemLabel="Alpha" itemValue="alpha"/>
+                        </p:selectOneRadio>
+                    </h:panelGrid>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </h:body>
+</html>
+

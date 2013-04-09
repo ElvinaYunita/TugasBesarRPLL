@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 4:32:36 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.ithb.model.Kelola" table="kelola" catalog="siabaru">
+        <composite-id name="id" class="com.ithb.model.KelolaId">
+            <key-property name="nik" type="string">
+                <column name="nik" length="5" />
+            </key-property>
+            <key-property name="kodemk" type="string">
+                <column name="kodemk" length="5" />
+            </key-property>
+            <key-property name="idperiode" type="string">
+                <column name="idperiode" length="5" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="dosen" class="com.ithb.model.Dosen" update="false" insert="false" fetch="select">
+            <column name="nik" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="periode" class="com.ithb.model.Periode" update="false" insert="false" fetch="select">
+            <column name="idperiode" length="5" not-null="true" />
+        </many-to-one>
+        <many-to-one name="matakuliah" class="com.ithb.model.Matakuliah" update="false" insert="false" fetch="select">
+            <column name="kodemk" length="5" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Sistem Informasi Akademik</title>
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <link href="styles.css" rel="stylesheet" type="text/css" media="screen" />
+    </h:head>
+    <h:body>
+        <div id="header">
+            <div id="logo">
+                <h1><a href="#">Sistem Informasi Akademik</a></h1>
+                <a href="#"><small>Anda Login Sebagai: Dosen</small></a>
+            </div>
+            <div id="menu">
+                <ul>
+                    <li><a href="menuDosen.jsf">Dosen</a></li>
+                    <li><a href="menuStaff.jsf" class="select">Staff</a></li>
+                    <li><a href="menuMhs.jsf">Mahasiswa</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="content_top"></div>
+        <div id="content">
+            <div id="prew_box">
+                <div id="prew_top"></div>
+                <div id="prew_bg">
+
+                    <div id="wrapper">
+                        <div id="slider-wrapper">        
+                            <h1 style="color: white">Pengumuman</h1>
+                            <h2>Perkuliahan</h2>
+                            <h2>Perkuliahan</h2>
+                            <h2>Perkuliahan</h2>
+                            <h2>Perkuliahan</h2>      
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+                <div id="prew_bot"></div>
+            </div>
+            <div class="white_box">
+                <div class="white_box_top"></div>
+                <div class="white_box_bg">
+
+                    <div>
+                        <h3>EDIT NILAI</h3>
+                        <form>
+                            <table> 
+                                <tr>
+                                    <td>Dosen</td>
+                                    <td>: Budiman S.T.<br/></td>
+                                </tr>
+                                <tr>
+                                    <td>Matakuliah</td>
+                                    <td>: 
+                                        <select>
+                                            <option>Algoritma</option>
+                                            <option>Struktur Data</option>					
+                                        </select>
+                                        <br/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+
+                    <h:form id="formTabel">
+                        <p:dataTable value="#{nilaiController.nilaiList}" var="nilai" rows="2" rowKey="#{nilai.id.kodemk}, #{nilai.id.nik}, #{nilai.id.nim}" selection="#{nilaiController.nilai}" selectionMode="single" draggableColumns="true">
+                            <p:ajax event="rowSelect" update=":formBawah" oncomplete="editDialog.show()"></p:ajax>
+                            <p:column headerText="NIK">
+                                #{nilai.id.nik}
+                            </p:column>
+                            <p:column headerText="NIM">
+                                #{nilai.id.nim}
+                            </p:column>
+                            <p:column headerText="Kuis">
+                                #{nilai.kuis}
+                            </p:column>
+                            <p:column headerText="Tugas">
+                                #{nilai.tugas}
+                            </p:column>
+                            <p:column headerText="UTS">
+                                #{nilai.uts}
+                            </p:column>
+                            <p:column headerText="UAS">
+                                #{nilai.uas}
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+
+                    <p:dialog widgetVar="editDialog" showEffect="explode" hideEffect="explode" modal="true" maximizable="true" header="Edit Nilai">
+                        <h:form id="formBawah">
+                            <h:panelGrid columns="3">
+                                <h:outputText value="NIM"/>
+                                <h:outputText value=":"/>
+                                <h:outputText value="#{nilaiController.nilai.id.nim}"/>
+
+                                <h:outputText value="KODEMK"/>
+                                <h:outputText value=":"/>
+                                <h:outputText value="#{nilaiController.nilai.id.kodemk}" />
+
+                                <h:outputText value="Quiz"/>
+                                <h:outputText value=":"/>
+                                <p:inputText value="#{nilaiController.nilai.kuis}"/>
+                                
+                                <h:outputText value="Tugas"/>
+                                <h:outputText value=":"/>
+                                <p:inputText value="#{nilaiController.nilai.tugas}"/>
+
+                                <h:outputText value="UTS"/>
+                                <h:outputText value=":"/>
+                                <p:inputText value="#{nilaiController.nilai.uts}"/>
+
+                                <h:outputText value="UAS"/>
+                                <h:outputText value=":"/>
+                                <p:inputText value="#{nilaiController.nilai.uas}"/>
+
+                                <p:commandButton value="UPDATE" action="#" update="@form, :formTabel" oncomplete="editDialog.hide(), successDialog.show()"></p:commandButton>
+                            </h:panelGrid>
+                        </h:form>
+                    </p:dialog>
+                </div>
+                <div class="white_box_bot"></div>
+            </div>
+        </div>
+        <div id="content_bot"></div>
+
+        <div id="footer">
+            <p>Copyright  2013.</p>
+            <p>Sistem Informasi Akademik </p>
+        </div>
+    </h:body>
+</html>
+
